@@ -41,8 +41,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.dynmap.DynmapAPI;
-import org.kingdoms.main.Kingdoms;
-import org.kingdoms.manager.game.GameManagement;
+//import org.kingdoms.main.Kingdoms;
+//import org.kingdoms.manager.game.GameManagement;
 
 import com.bekvon.bukkit.residence.Placeholders.Placeholder;
 import com.bekvon.bukkit.residence.Placeholders.PlaceholderAPIHook;
@@ -69,7 +69,7 @@ import com.bekvon.bukkit.residence.economy.CMIEconomy;
 import com.bekvon.bukkit.residence.economy.EconomyInterface;
 import com.bekvon.bukkit.residence.economy.EssentialsEcoAdapter;
 import com.bekvon.bukkit.residence.economy.IConomy6Adapter;
-import com.bekvon.bukkit.residence.economy.RealShopEconomy;
+//import com.bekvon.bukkit.residence.economy.RealShopEconomy;
 import com.bekvon.bukkit.residence.economy.TransactionManager;
 import com.bekvon.bukkit.residence.economy.rent.RentManager;
 import com.bekvon.bukkit.residence.gui.FlagUtil;
@@ -105,7 +105,7 @@ import com.bekvon.bukkit.residence.protection.ResidencePermissions;
 import com.bekvon.bukkit.residence.protection.WorldFlagManager;
 import com.bekvon.bukkit.residence.raid.ResidenceRaidListener;
 import com.bekvon.bukkit.residence.selection.AutoSelection;
-import com.bekvon.bukkit.residence.selection.KingdomsUtil;
+//import com.bekvon.bukkit.residence.selection.KingdomsUtil;
 import com.bekvon.bukkit.residence.selection.Schematics7Manager;
 import com.bekvon.bukkit.residence.selection.SchematicsManager;
 import com.bekvon.bukkit.residence.selection.SelectionManager;
@@ -132,8 +132,8 @@ import com.earth2me.essentials.Essentials;
 import com.residence.mcstats.Metrics;
 import com.residence.zip.ZipLibrary;
 
-import fr.crafter.tickleman.realeconomy.RealEconomy;
-import fr.crafter.tickleman.realplugin.RealPlugin;
+//import fr.crafter.tickleman.realeconomy.RealEconomy;
+//import fr.crafter.tickleman.realplugin.RealPlugin;
 import net.Zrips.CMILib.Colors.CMIChatColor;
 import net.Zrips.CMILib.Items.CMIMaterial;
 import net.Zrips.CMILib.Logs.CMIDebug;
@@ -200,7 +200,7 @@ public class Residence extends JavaPlugin {
     private InformationPager InformationPagerManager;
     private WorldGuardInterface worldGuardUtil;
     private int wepVersion = 6;
-    private KingdomsUtil kingdomsUtil;
+//    private KingdomsUtil kingdomsUtil;
 
     protected CommandFiller cmdFiller;
 
@@ -594,16 +594,16 @@ public class Residence extends JavaPlugin {
                     if (economy == null) {
                         this.loadEssentialsEconomy();
                     }
-                    if (economy == null) {
-                        this.loadRealEconomy();
-                    }
+//                    if (economy == null) {
+//                        this.loadRealEconomy();
+//                    }
                     if (economy == null) {
                         this.loadIConomy();
                     }
                     break;
-                case RealEconomy:
-                    this.loadRealEconomy();
-                    break;
+//                case RealEconomy:
+//                    this.loadRealEconomy();
+//                    break;
                 case Vault:
                     if (this.getPermissionManager().getPermissionsPlugin() instanceof ResidenceVaultAdapter) {
                         ResidenceVaultAdapter vault = (ResidenceVaultAdapter) this.getPermissionManager().getPermissionsPlugin();
@@ -705,7 +705,7 @@ public class Residence extends JavaPlugin {
                     setWorldEdit();
                 setWorldGuard();
 
-                setKingdoms();
+//                setKingdoms();
 
                 PluginManager pm = getServer().getPluginManager();
 
@@ -985,21 +985,21 @@ public class Residence extends JavaPlugin {
         }
     }
 
-    private GameManagement kingdomsmanager = null;
+//    private GameManagement kingdomsmanager = null;
+//
+//    private void setKingdoms() {
+//        if (Bukkit.getPluginManager().getPlugin("Kingdoms") != null) {
+//            try {
+//                kingdomsmanager = Kingdoms.getManagers();
+//            } catch (Throwable e) {
+//                this.consoleMessage("Failed to recognize Kingdoms plugin. Compatability disabled");
+//            }
+//        }
+//    }
 
-    private void setKingdoms() {
-        if (Bukkit.getPluginManager().getPlugin("Kingdoms") != null) {
-            try {
-                kingdomsmanager = Kingdoms.getManagers();
-            } catch (Throwable e) {
-                this.consoleMessage("Failed to recognize Kingdoms plugin. Compatability disabled");
-            }
-        }
-    }
-
-    public GameManagement getKingdomsManager() {
-        return kingdomsmanager;
-    }
+//    public GameManagement getKingdomsManager() {
+//        return kingdomsmanager;
+//    }
 
     private void setWorldGuard() {
         Plugin wgplugin = server.getPluginManager().getPlugin("WorldGuard");
@@ -1224,15 +1224,15 @@ public class Residence extends JavaPlugin {
         }
     }
 
-    private void loadRealEconomy() {
-        Plugin p = getServer().getPluginManager().getPlugin("RealPlugin");
-        if (p != null) {
-            economy = new RealShopEconomy(new RealEconomy((RealPlugin) p));
-            consoleMessage("Successfully linked with &5RealShop Economy");
-        } else {
-            consoleMessage("RealShop Economy NOT found!");
-        }
-    }
+//    private void loadRealEconomy() {
+//        Plugin p = getServer().getPluginManager().getPlugin("RealPlugin");
+//        if (p != null) {
+//            economy = new RealShopEconomy(new RealEconomy((RealPlugin) p));
+//            consoleMessage("Successfully linked with &5RealShop Economy");
+//        } else {
+//            consoleMessage("RealShop Economy NOT found!");
+//        }
+//    }
 
     private void loadVaultEconomy() {
         Plugin p = getServer().getPluginManager().getPlugin("Vault");
@@ -2048,11 +2048,11 @@ public class Residence extends JavaPlugin {
         return worldGuardUtil;
     }
 
-    public KingdomsUtil getKingdomsUtil() {
-        if (kingdomsUtil == null)
-            kingdomsUtil = new KingdomsUtil(this);
-        return kingdomsUtil;
-    }
+//    public KingdomsUtil getKingdomsUtil() {
+//        if (kingdomsUtil == null)
+//            kingdomsUtil = new KingdomsUtil(this);
+//        return kingdomsUtil;
+//    }
 
     public static Residence getInstance() {
         return instance;
