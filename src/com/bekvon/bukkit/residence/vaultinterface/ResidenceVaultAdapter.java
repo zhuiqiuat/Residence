@@ -111,7 +111,7 @@ public class ResidenceVaultAdapter implements EconomyInterface, PermissionsInter
     @SuppressWarnings("deprecation")
     @Override
     public boolean canAfford(String playerName, double amount) {
-        if (amount <= 0) return false;
+        if (amount < 0) return false;
         return economy.has(playerName, amount);
     }
 
