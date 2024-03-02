@@ -15,6 +15,7 @@ Residence 通过阻止不同的破坏方式来保护您的领地 例如不允许
 - 移除CMILib依赖
 - 移除WorldEdit支持
 - 移除WorldGuard支持
+- 移除pl3xmap支持
 - 移除所有经济支持（除Vault）
 - 转换为Maven
 - 移除一些不必要的命令以及功能
