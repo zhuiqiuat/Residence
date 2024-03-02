@@ -505,9 +505,6 @@ public class ClaimedResidence {
             if (!resadmin) {
                 if (Residence.getInstance().getWorldGuard() != null && Residence.getInstance().getWorldGuardUtil().isSelectionInArea(player))
                     return false;
-
-                if (Residence.getInstance().getKingdomsManager() != null && Residence.getInstance().getKingdomsUtil().isSelectionInArea(player))
-                    return false;
             }
 
             if (Residence.getInstance().getConfigManager().isChargeOnAreaAdd() && chargeMoney && getParent() == null && Residence.getInstance().getConfigManager().enableEconomy() && !resadmin) {
@@ -673,8 +670,6 @@ public class ClaimedResidence {
 
             if (!resadmin) {
                 if (Residence.getInstance().getWorldGuard() != null && Residence.getInstance().getWorldGuardUtil().isSelectionInArea(player))
-                    return false;
-                if (Residence.getInstance().getKingdomsManager() != null && Residence.getInstance().getKingdomsUtil().isSelectionInArea(player))
                     return false;
             }
 
