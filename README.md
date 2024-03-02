@@ -12,6 +12,7 @@ Residence 通过阻止不同的破坏方式来保护您的领地 例如不允许
 - 移除Bpermission支持
   
 # 计划
+- 移除CMILib依赖
 - 移除WorldEdit支持
 - 移除WorldGuard支持
 - 移除所有经济支持（除Vault）
