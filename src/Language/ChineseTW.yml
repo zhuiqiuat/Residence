@@ -159,7 +159,7 @@ Language:
     oneHour: '&e%1 &6小時 '
     min: '&e%1 &6分鐘 '
     sec: '&e%1 &6秒 '
-    listSplitter: 、
+    listSplitter: '、'
     click: '&7點擊'
     clickToConfirm: '&7點擊確認'
   server:
@@ -466,9 +466,9 @@ Language:
     DisabledWorld: '&c此世界停用領地。'
     CantCreate: '&c無法在此世界建立領地。'
     UseNumbers: '&c請使用數字……'
-    # Replace all text with '' to disable this message
+    # 將所有文字替換為 '' 以停用此訊息
     CantPlaceLava: '&c無法在沒有領地的地方放置岩漿。'
-    # Replace all text with '' to disable this message
+    # 將所有文字替換為 '' 以停用此訊息
     CantPlaceWater: '&c無法在沒有領地的地方放置水。'
     CantPlaceChest: '&c你沒有放置儲物箱的權限。'
     NoPermission: '&c你沒有執行此操作的權限。'
@@ -550,8 +550,8 @@ Language:
     Owner: '&e擁有者：&6%1'
     World: '&e世界：&6%1'
     Subzones: '&e子區域'
-    # The below lines represent various messages residence sends to the players.
-    # Note that some messages have variables such as %1 that are inserted at runtime.
+    # 以下幾行代表 Residence 傳送給玩家的各種訊息。
+    # 請注意，某些訊息具有在執行時插入的變數，例如 %1。
     NewPlayerInfo: '&e如果要建立領地，請使用伺服器指定的工具選擇領地的兩個對角，然後使用指令 &2/res create [領地名稱]&e。'
 CommandHelp:
   Description: 內涵領地說明
