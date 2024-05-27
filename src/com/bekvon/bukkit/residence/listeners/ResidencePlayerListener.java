@@ -93,6 +93,7 @@ import net.Zrips.CMILib.Entities.CMIEntity;
 import net.Zrips.CMILib.Entities.CMIEntityType;
 import net.Zrips.CMILib.Items.CMIItemStack;
 import net.Zrips.CMILib.Items.CMIMaterial;
+import net.Zrips.CMILib.Logs.CMIDebug;
 import net.Zrips.CMILib.TitleMessages.CMITitleMessage;
 import net.Zrips.CMILib.Util.CMIVersionChecker;
 import net.Zrips.CMILib.Version.Version;
@@ -1669,7 +1670,7 @@ public class ResidencePlayerListener implements Listener {
         Entity ent = event.getRightClicked();
 
         CMIEntityType type = CMIEntityType.get(ent);
-        
+
         if (type != CMIEntityType.CHEST_MINECART && type != CMIEntityType.HOPPER_MINECART)
             return;
 
@@ -1865,11 +1866,18 @@ public class ResidencePlayerListener implements Listener {
 
         Location loc = event.getBlockClicked().getLocation().clone();
 
-        if (Version.isCurrentHigher(Version.v1_12_R1))
-            try {
-                loc.add(event.getBlockFace().getDirection());
-            } catch (Throwable e) {
-            }
+        if (Version.isCurrentHigher(Version.v1_12_R1)) {
+
+            if (Version.isCurrentHigher(Version.v1_13_R1) && event.getBlockClicked().getBlockData() instanceof org.bukkit.block.data.Waterlogged) {
+                org.bukkit.block.data.Waterlogged waterloggedBlock = (org.bukkit.block.data.Waterlogged) event.getBlockClicked().getBlockData();
+                if (waterloggedBlock.isWaterlogged())
+                    loc.add(event.getBlockFace().getDirection());
+            } else
+                try {
+                    loc.add(event.getBlockFace().getDirection());
+                } catch (Throwable e) {
+                }
+        }
 
         ClaimedResidence res = plugin.getResidenceManager().getByLoc(loc);
         if (res != null) {
