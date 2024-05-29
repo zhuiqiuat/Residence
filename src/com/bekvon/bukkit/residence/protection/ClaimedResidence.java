@@ -2388,4 +2388,8 @@ public class ClaimedResidence {
         }
         return trusted;
     }
+
+    public static ClaimedResidence getByName(String landName) {
+        return Residence.getInstance().getResidenceManager().getByName(landName);        
+    }
 }
