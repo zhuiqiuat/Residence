@@ -276,16 +276,11 @@ public class ResidenceManager implements ResidenceInterface {
         if (residences.containsKey(resName.toLowerCase())) {
             plugin.msg(player, lm.Residence_AlreadyExists, residences.get(resName.toLowerCase()).getResidenceName());
             return false;
-        } 
+        }
 
         newRes.BlockSellPrice = group.getSellPerBlock();
 
         if (!newRes.addArea(player, newArea, "main", resadmin, false))
-            return false;
-
-        ResidenceCreationEvent resevent = new ResidenceCreationEvent(player, resName, newRes, newArea);
-        plugin.getServ().getPluginManager().callEvent(resevent);
-        if (resevent.isCancelled())
             return false;
 
         if (Residence.getInstance().getConfigManager().isChargeOnCreation() && !newRes.isSubzone() && plugin.getConfigManager().enableEconomy() && !resadmin) {
@@ -297,6 +292,11 @@ public class ResidenceManager implements ResidenceInterface {
                 return false;
             }
         }
+
+        ResidenceCreationEvent resevent = new ResidenceCreationEvent(player, resName, newRes, newArea);
+        plugin.getServ().getPluginManager().callEvent(resevent);
+        if (resevent.isCancelled())
+            return false;
 
         residences.put(resName.toLowerCase(), newRes);
 
@@ -1346,12 +1346,12 @@ public class ResidenceManager implements ResidenceInterface {
 
                 ResidenceRenameEvent resevent = new ResidenceRenameEvent(res, newName, oldName);
                 plugin.getServ().getPluginManager().callEvent(resevent);
-                
+
                 if (resevent.isCancelled())
                     return false;
-                
+
                 newName = resevent.getNewResidenceName();
-                
+
                 removeChunkList(oldName);
                 res.setName(newName);
 
