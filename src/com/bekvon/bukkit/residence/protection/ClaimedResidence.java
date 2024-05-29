@@ -311,14 +311,17 @@ public class ClaimedResidence {
             return true;
         ResidencePlayer rPlayer = Residence.getInstance().getPlayerManager().getResidencePlayer(player);
         PermissionGroup group = rPlayer.getGroup();
+
         if (area.getXSize() > rPlayer.getMaxX()) {
             Residence.getInstance().msg(player, lm.Area_ToBigX, area.getXSize(), rPlayer.getMaxX());
             return false;
         }
-        if (area.getYSize() > group.getMaxY() + (-group.getMinY())) {
+
+        if (area.getYSize() > group.getMaxY()) {
             Residence.getInstance().msg(player, lm.Area_ToBigY, area.getYSize(), group.getMaxY());
             return false;
         }
+
         if (area.getZSize() > rPlayer.getMaxZ()) {
             Residence.getInstance().msg(player, lm.Area_ToBigZ, area.getZSize(), rPlayer.getMaxZ());
             return false;
@@ -403,6 +406,7 @@ public class ClaimedResidence {
             }
             return false;
         }
+
         if (getParent() == null) {
             String collideResidence = Residence.getInstance().getResidenceManager().checkAreaCollision(area, this);
             ClaimedResidence cRes = Residence.getInstance().getResidenceManager().getByName(collideResidence);
@@ -2390,6 +2394,6 @@ public class ClaimedResidence {
     }
 
     public static ClaimedResidence getByName(String landName) {
-        return Residence.getInstance().getResidenceManager().getByName(landName);        
+        return Residence.getInstance().getResidenceManager().getByName(landName);
     }
 }
